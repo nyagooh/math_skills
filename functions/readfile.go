@@ -2,30 +2,37 @@ package functions
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
-
-func Readfile() []float64 {
-	file, err := os.Open("data.txt")
+// reads the file at argument[0] line by line
+func Readfile(str string) []float64 {
+	file, err := os.Open(str)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
-	var input string
+	defer file.Close()
+
 	var output []float64
+
 	data := 0.0
 	scanner := bufio.NewScanner(file)
+	var count int
 	for scanner.Scan() {
-		input = scanner.Text()
+		input := scanner.Text()
 		data, err = strconv.ParseFloat(input, 64)
 		if err != nil {
-			fmt.Println(err)
+			log.Fatal(err)
 		}
 		output = append(output, data)
+		count++
 	}
 
-	defer file.Close()
+	if count == 0 {
+		log.Fatal("Empty file")
+	}
+
 	return output
 
 }

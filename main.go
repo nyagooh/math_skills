@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
+	"math"
 	m "mathskills/functions"
 	"os"
 	"strings"
-	"math"
 )
 
 func main() {
@@ -19,12 +19,13 @@ func main() {
 	if !isSuffix {
 		log.Fatal("wrong extension at args1")
 	}
-	input := m.Readfile()
+	input := m.Readfile(args1)
 	mean := math.Round(m.CalculateMean(input))
 	median := math.Round(m.CalculateMedian(input))
-	deviation := math.Round(m.CalculateStandardSDeviation(input))
-	variance := math.Round(m.CalculateVariance(input))
-	fmt.Printf("mean%vmedian%vdeviation%vvariance%v",mean,median,deviation,variance)
+	variance := int(math.Round(m.CalculateVariance(input)))
+	deviation := math.Round(math.Sqrt(m.CalculateVariance(input)))
+
+	fmt.Printf("Average:%v\nMedian:%v\nVariance:%v\nStandard Deviation:%v", mean, median, variance, deviation)
 	fmt.Println()
 
 }
