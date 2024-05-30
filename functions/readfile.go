@@ -1,12 +1,14 @@
 package functions
 
 import (
+	"strings"
 	"bufio"
 	"log"
 	"os"
 	"strconv"
 )
-// reads the file at argument[0] line by line
+
+// reads the file at argument[0] line by line and converts them to a slice of float64
 func Readfile(str string) []float64 {
 	file, err := os.Open(str)
 	if err != nil {
@@ -21,7 +23,9 @@ func Readfile(str string) []float64 {
 	var count int
 	for scanner.Scan() {
 		input := scanner.Text()
-		data, err = strconv.ParseFloat(input, 64)
+		ReplaceFiles := strings.ReplaceAll(input,",","")
+		TrimFile := strings.TrimSpace(ReplaceFiles)
+		data, err = strconv.ParseFloat(TrimFile, 64)
 		if err != nil {
 			log.Fatal(err)
 		}

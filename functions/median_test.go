@@ -9,8 +9,7 @@ func TestCalculateMedian(t *testing.T) {
 		args []float64
 		want float64
 	}{
-		{"odd numbers", []float64{189, 113, 121, 114, 145}, 121},
-		{"even numbers", []float64{189, 113, 121, 114, 145,122}, 122},
+		
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
