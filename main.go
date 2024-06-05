@@ -25,7 +25,7 @@ func main() {
 	variance := int(math.Round(m.CalculateVariance(input)))
 	deviation := math.Round(math.Sqrt(m.CalculateVariance(input)))
 
-	fmt.Printf("Average:%v\nMedian:%v\nVariance:%v\nStandard Deviation:%v", mean, median, variance, deviation)
+	fmt.Printf("Average: %v\nMedian: %v\nVariance:%v\nStandard Deviation:%v", mean, median, variance, deviation)
 	fmt.Println()
 
 }
